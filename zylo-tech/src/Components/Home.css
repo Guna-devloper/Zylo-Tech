@@ -1,0 +1,42 @@
+/* Carousel Section */
+.carousel-section {
+    margin-bottom: 40px;
+  }
+  
+  .carousel-item img {
+    max-height: 400px;
+    object-fit: cover;
+  }
+  
+  /* Testimonial Section */
+  .testimonial-section {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+  }
+  
+  .testimonial-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .testimonial-text {
+    font-size: 1rem;
+    font-style: italic;
+    color: #6c757d;
+  }
+  
+  .testimonial-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #007bff;
+  }
+  
+  .testimonial-role {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+  

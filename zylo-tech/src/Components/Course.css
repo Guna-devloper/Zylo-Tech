@@ -1,0 +1,120 @@
+/* Hero Section */
+.course-hero {
+    background: linear-gradient(to right, #6c63ff, #3b32e6);
+    color: #ffffff;
+    padding: 60px 0;
+  }
+  
+  .course-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .course-description {
+    font-size: 1.2rem;
+    margin: 20px 0;
+  }
+  
+  .enroll-button {
+    background-color: #ffc107;
+    border: none;
+  }
+  
+  .course-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Course Details Section */
+  .course-details {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .syllabus-list li {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .syllabus-list li:hover {
+    background-color: #e8e8e8;
+  }
+  
+  .course-info-card,
+  .instructor-card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .instructor-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .instructor-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .instructor-bio {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+  
+  /* Ratings Section */
+  .ratings-section {
+    background-color: #ffffff;
+    padding: 60px 0;
+  }
+  
+  .rating {
+    color: #ffc107;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .review-card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .review-text {
+    font-size: 1rem;
+    color: #6c757d;
+    font-style: italic;
+  }
+  
+  /* Call-to-Action Section */
+  .cta-section {
+    background: #6c63ff;
+    color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .cta-section .btn-success {
+    background-color: #28a745;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+  }
+  

@@ -1,0 +1,43 @@
+/* Navbar Customization */
+.navbar-custom {
+    background-color: #007bff; /* Primary color */
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-custom .navbar-brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .navbar-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .nav-link-custom {
+    color: #ffffff !important;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 10px;
+    transition: color 0.3s;
+  }
+  
+  .nav-link-custom:hover {
+    color: #ffc107 !important; /* Highlight color on hover */
+  }
+  
+  .signup-button {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 25px;
+  }
+  
+  .signup-button:hover {
+    background-color: #0056b3 !important; /* Darker blue on hover */
+    border-color: #0056b3 !important;
+  }
+  
