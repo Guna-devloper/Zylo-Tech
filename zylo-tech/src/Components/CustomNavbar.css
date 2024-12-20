@@ -1,43 +1,137 @@
-/* Navbar Customization */
-.navbar-custom {
-    background-color: #007bff; /* Primary color */
-    padding: 10px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* CustomNavbar.css */
+
+/* Overall Navbar Styling */
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #343a40; /* Dark background */
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo Section */
+.navbar-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.navbar-brand-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navigation Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #00b4d8; /* Light blue hover effect */
+}
+
+/* Dropdown Menu */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  color: black;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: black;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: #e9ecef;
+  margin: 5px 0;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* CTA Button */
+.signup-button {
+  background-color: #00b4d8;
+  color: white;
+  padding: 5px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+  background-color: #0077b6; /* Darker blue */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-links {
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  .navbar-custom .navbar-brand-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
+
+  .dropdown-menu {
+    right: auto;
+    left: 0;
   }
-  
-  .navbar-logo {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-  }
-  
-  .nav-link-custom {
-    color: #ffffff !important;
-    font-size: 1rem;
-    font-weight: 500;
-    margin: 0 10px;
-    transition: color 0.3s;
-  }
-  
-  .nav-link-custom:hover {
-    color: #ffc107 !important; /* Highlight color on hover */
-  }
-  
-  .signup-button {
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 25px;
-  }
-  
-  .signup-button:hover {
-    background-color: #0056b3 !important; /* Darker blue on hover */
-    border-color: #0056b3 !important;
-  }
-  
+}

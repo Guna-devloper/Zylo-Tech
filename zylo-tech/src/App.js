@@ -13,7 +13,6 @@ function App() {
   return (
     <BrowserRouter>
       <CustomNavbar /> 
-      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -22,9 +21,10 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/courses/:id" element={<Course />} />
       </Routes>
-      
-      <Footer />
+            <Footer />
+
     </BrowserRouter>
+    
   );
 }
 

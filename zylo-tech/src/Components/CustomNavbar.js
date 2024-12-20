@@ -1,76 +1,61 @@
 import React from "react";
-import { Navbar, Nav, Container, Button, NavDropdown } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import logo from "../Assets/zylo-logo.png"; // Replace with your logo path
 import "./CustomNavbar.css";
 
 const CustomNavbar = () => {
-  console.log("navbar------>>>>>")
   return (
-    <Navbar expand="lg" className="navbar-custom" sticky="top">
-      <h1>welcome</h1>
-      <Container>
-        {/* Logo */}
-        <LinkContainer to="/">
-          <Navbar.Brand className="d-flex align-items-center">
-            <img src={logo} alt="Zylo LMS Logo" className="navbar-logo" />
-            <span className="navbar-brand-name">Zylo LMS</span>
-          </Navbar.Brand>
-        </LinkContainer>
+    <header className="custom-navbar">
+      {/* Logo Section */}
+      <div className="navbar-logo-container">
+        <Link to="/" className="navbar-logo-link">
+          <img src={logo} alt="Zylo LMS Logo" className="navbar-logo" />
+          <span className="navbar-brand-name">Zylo Tech</span>
+        </Link>
+      </div>
 
-        {/* Toggle Button for Mobile */}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      {/* Navigation Links */}
+      <nav className="navbar-links">
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
+        <Link to="/dashboard" className="nav-link">
+          Dashboard
+        </Link>
+        <Link to="/courses/:id" className="nav-link">
+          Live Classes
+        </Link>
+        <Link to="/quiz" className="nav-link">
+          Quizzes
+        </Link>
 
-        {/* Navigation Links */}
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <LinkContainer to="/">
-              <Nav.Link className="nav-link-custom">Home</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/dashboard">
-              <Nav.Link className="nav-link-custom">Dashboard</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/live-class">
-              <Nav.Link className="nav-link-custom">Live Classes</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/quiz">
-              <Nav.Link className="nav-link-custom">Quizzes</Nav.Link>
-            </LinkContainer>
+        {/* Dropdown Menu */}
+        <div className="nav-dropdown">
+          <button className="dropdown-toggle">
+            <FaUserCircle size={20} className="me-2" />
+            Account
+          </button>
+          <div className="dropdown-menu">
+            <Link to="/profile" className="dropdown-item">
+              Profile
+            </Link>
+            <Link to="/settings" className="dropdown-item">
+              Settings
+            </Link>
+            <div className="dropdown-divider"></div>
+            <Link to="/login" className="dropdown-item">
+              Logout
+            </Link>
+          </div>
+        </div>
 
-            {/* Dropdown for User Actions */}
-            <NavDropdown
-              title={
-                <span className="d-flex align-items-center">
-                  <FaUserCircle size={20} className="me-2" />
-                  Account
-                </span>
-              }
-              id="basic-nav-dropdown"
-              className="nav-link-custom"
-            >
-              <LinkContainer to="/profile">
-                <NavDropdown.Item>Profile</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/settings">
-                <NavDropdown.Item>Settings</NavDropdown.Item>
-              </LinkContainer>
-              <NavDropdown.Divider />
-              <LinkContainer to="/login">
-                <NavDropdown.Item>Logout</NavDropdown.Item>
-              </LinkContainer>
-            </NavDropdown>
-
-            {/* CTA Button */}
-            <LinkContainer to="/signup">
-              <Button variant="primary" className="signup-button ms-3">
-                Sign Up
-              </Button>
-            </LinkContainer>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+        {/* Call-to-Action Button */}
+        <Link to="/signup" className="signup-button">
+          Sign Up
+        </Link>
+      </nav>
+    </header>
   );
 };
 

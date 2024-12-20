@@ -10,9 +10,9 @@ const Footer = () => {
         <Row>
           {/* Logo and Description */}
           <Col md={4} className="footer-column">
-            <h5 className="footer-title">Zylo LMS</h5>
+            <h5 className="footer-title">Zylo Tech</h5>
             <p className="footer-description">
-              Empowering learning through technology. Zylo LMS provides seamless access to courses, live classes, and resources to help you achieve your goals.
+              Empowering learning through technology. Zylo Tech provides seamless access to courses, live classes, and resources to help you achieve your goals.
             </p>
           </Col>
 
@@ -42,7 +42,7 @@ const Footer = () => {
           <Col md={4} className="footer-column">
             <h5 className="footer-title">Contact Us</h5>
             <p className="footer-contact">
-              <FaEnvelope /> support@zylo-lms.com
+              <FaEnvelope />zylotechofficial@gmail.com
             </p>
             <div className="footer-social">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
@@ -65,7 +65,7 @@ const Footer = () => {
         <Row className="mt-4">
           <Col className="text-center">
             <p className="footer-copyright">
-              &copy; {new Date().getFullYear()} Zylo LMS. All rights reserved.
+              &copy; {new Date().getFullYear()} Zylo Tech. All rights reserved.
             </p>
           </Col>
         </Row>
