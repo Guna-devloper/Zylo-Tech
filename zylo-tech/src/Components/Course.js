@@ -2,8 +2,13 @@ import React from "react";
 import { Container, Row, Col, Card, Button, ListGroup } from "react-bootstrap";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import "./Course.css";
+import { useNavigate } from "react-router-dom";
 
 const Course = () => {
+  const navigate = useNavigate()
+  const handleEnroll = () =>{
+    navigate("/enroll")
+  }
   return (
     <div className="course-page">
       {/* Hero Section */}
@@ -15,7 +20,7 @@ const Course = () => {
               <p className="course-description">
                 Learn React from scratch and build modern, responsive web applications with hands-on projects.
               </p>
-              <Button variant="success" size="lg" className="enroll-button">
+              <Button variant="success" size="lg" className="enroll-button" onClick={handleEnroll}>
                 Enroll Now
               </Button>
             </Col>
@@ -129,7 +134,7 @@ const Course = () => {
           <Row className="text-center">
             <Col>
               <h2>Join Thousands of Learners Today</h2>
-              <Button variant="success" size="lg">
+              <Button variant="success" size="lg" onClick={handleEnroll}>
                 Enroll in This Course
               </Button>
             </Col>

@@ -27,7 +27,7 @@ const Footer = () => {
                 <a href="/dashboard">Dashboard</a>
               </li>
               <li>
-                <a href="/live-class">Live Classes</a>
+                <a href="/course">Course</a>
               </li>
               <li>
                 <a href="/quiz">Quizzes</a>

@@ -10,7 +10,7 @@ const Dashboard = () => {
         {/* Header Section */}
         <Row className="mb-4">
           <Col>
-            <h1 className="dashboard-title">Welcome to Zylo LMS Dashboard</h1>
+            <h1 className="dashboard-title">Welcome to Zylo Tech</h1>
             <p className="dashboard-subtitle">
               Your one-stop solution for managing courses, live classes, and more!
             </p>

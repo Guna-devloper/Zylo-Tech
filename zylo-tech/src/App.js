@@ -9,6 +9,7 @@ import Dashboard from "./Components/Dashboard";
 import Profile from "./Components/Profile";
 import Course from "./Components/Course";
 import Coding from "./Components/Coding";
+import Enroll from "./Components/Enroll";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/courses/:id" element={<Course />} />
+        <Route path="/course" element={<Course />} />
         <Route path="/coding" element={<Coding userId="12345" />} />
+        <Route path="/enroll" element={<Enroll />} />
       </Routes>
             <Footer />
 

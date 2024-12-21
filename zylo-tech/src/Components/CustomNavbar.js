@@ -24,7 +24,7 @@ const CustomNavbar = () => {
           Dashboard
         </Link>
         <Link to="/courses/:id" className="nav-link">
-          Live Classes
+        Course
         </Link>
         <Link to="/quiz" className="nav-link">
           Quizzes
