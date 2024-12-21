@@ -2,8 +2,10 @@ import React from "react";
 import { Container, Row, Col, Card, Carousel } from "react-bootstrap";
 import { FaChalkboardTeacher, FaBookOpen, FaVideo, FaGraduationCap } from "react-icons/fa";
 import "./Home.css";
-import web from "../Assets/web1.png"
+import web from "../Assets/web2.png"
 import data from "../Assets/datasc.png"
+import ux from "../Assets/ui.png"
+
 const Home = () => {
     console.log("home------>>>>>>")
   return (
@@ -35,7 +37,7 @@ const Home = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://via.placeholder.com/1200x400?text=Featured+Course+3"
+            src={ux}
             alt="Featured Course 3"
           />
           <Carousel.Caption>

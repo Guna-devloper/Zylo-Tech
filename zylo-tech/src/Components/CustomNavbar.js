@@ -29,6 +29,10 @@ const CustomNavbar = () => {
         <Link to="/quiz" className="nav-link">
           Quizzes
         </Link>
+        <Link to="/coding" className="nav-link">
+          PlayGround
+        </Link>
+
 
         {/* Dropdown Menu */}
         <div className="nav-dropdown">
