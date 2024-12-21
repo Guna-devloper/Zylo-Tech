@@ -23,7 +23,7 @@ const CustomNavbar = () => {
         <Link to="/dashboard" className="nav-link">
           Dashboard
         </Link>
-        <Link to="/courses/:id" className="nav-link">
+        <Link to="/course" className="nav-link">
         Course
         </Link>
         <Link to="/quiz" className="nav-link">
