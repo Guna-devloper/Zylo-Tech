@@ -3,11 +3,11 @@ import { Container, Row, Col, Card, Accordion, Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import Confetti from "react-confetti";
 import { motion } from "framer-motion";
-import { FaTrophy } from "react-icons/fa";  // Add a trophy icon for a celebratory touch
+import { FaTrophy } from "react-icons/fa"; // Add a trophy icon for a celebratory touch
 
 const QuizResult = () => {
   const location = useLocation();
-  const { score } = location.state;
+  const { score, quizResults } = location.state;
   const [isConfettiVisible, setConfettiVisible] = useState(false);
 
   // Start confetti effect after component mounts
@@ -44,7 +44,7 @@ const QuizResult = () => {
               >
                 <Card.Title className="text-center">
                   <h3>
-                    <FaTrophy style={{ color: "#FFD700", fontSize: "2rem" }} /> Your Score: {score} out of 35
+                    <FaTrophy style={{ color: "#FFD700", fontSize: "2rem" }} /> Your Score: {score} out of {quizResults.reduce((sum, topic) => sum + topic.total, 0)}
                   </h3>
                 </Card.Title>
               </motion.div>
@@ -65,13 +65,13 @@ const QuizResult = () => {
                     <h5>Review Your Answers</h5>
                   </Accordion.Header>
                   <Accordion.Body>
-                    <p>Here's where you can review your performance in each section of the quiz. This will help you track your progress.</p>
+                    <p>Here's how you performed in each topic:</p>
                     <ul>
-                      <li><strong>C Programming:</strong> Correct Answers: 2/3</li>
-                      <li><strong>JavaScript:</strong> Correct Answers: 2/3</li>
-                      <li><strong>CSS:</strong> Correct Answers: 3/3</li>
-                      <li><strong>HTML:</strong> Correct Answers: 2/3</li>
-                      {/* Add more topics dynamically based on quiz results */}
+                      {quizResults.map((result, index) => (
+                        <li key={index}>
+                          <strong>{result.topic}:</strong> Correct Answers: {result.correct}/{result.total}
+                        </li>
+                      ))}
                     </ul>
                   </Accordion.Body>
                 </Accordion.Item>

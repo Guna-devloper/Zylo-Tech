@@ -224,6 +224,12 @@ const Quiz = () => {
   };
 
   const handleSubmitQuiz = () => {
+    const quizResults = [
+        { topic: "C Programming", correct: 2, total: 3 },
+        { topic: "JavaScript", correct: 2, total: 3 },
+        { topic: "CSS", correct: 3, total: 3 },
+        { topic: "HTML", correct: 2, total: 3 },
+      ];
     const score = Object.keys(questions).reduce((acc, topic) => {
       const correctAnswers = selectedAnswers[topic].filter(
         (answer, index) => answer === questions[topic][index].correctAnswer
@@ -231,8 +237,7 @@ const Quiz = () => {
       acc += correctAnswers;
       return acc;
     }, 0);
-    navigate("/quizresults", { state: { score } });
-  };
+navigate("/quizresults", { state: { score, quizResults } });  };
 
   return (
     <motion.div className="quiz-page" initial="hidden" animate="visible" exit="hidden">
