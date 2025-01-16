@@ -31,6 +31,7 @@ const Course = () => {
     "HTML Fundamentals",
     "CSS Styling",
     "JavaScript Essentials",
+    "React.js fundamentals",
     "Node.js Development",
     "SQL Basics",
     "MySQL Database",
