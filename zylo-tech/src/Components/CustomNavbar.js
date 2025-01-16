@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa";
 import logo from "../Assets/zlogo.png"; // Replace with your logo path
 import "./CustomNavbar.css";
 
@@ -21,7 +20,7 @@ const CustomNavbar = () => {
           Home
         </Link>
         <Link to="/course" className="nav-link">
-        Course
+        Courses
         </Link>
         <Link to="/quiz" className="nav-link">
           Quizzes

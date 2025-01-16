@@ -1,8 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaEnvelope,FaPhone } from "react-icons/fa";
 import "./Footer.css";
-
 const Footer = () => {
   return (
     <footer className="footer">
@@ -23,9 +22,7 @@ const Footer = () => {
               <li>
                 <a href="/">Home</a>
               </li>
-              <li>
-                <a href="/dashboard">Dashboard</a>
-              </li>
+           
               <li>
                 <a href="/course">Course</a>
               </li>
@@ -33,7 +30,7 @@ const Footer = () => {
                 <a href="/quiz">Quizzes</a>
               </li>
               <li>
-                <a href="/profile">Profile</a>
+                <a href="/about">About</a>
               </li>
             </ul>
           </Col>
@@ -44,6 +41,9 @@ const Footer = () => {
             <p className="footer-contact">
               <FaEnvelope />zylotechofficial@gmail.com
             </p>
+            <p className="footer-contact">
+  <FaPhone /> +91 8220775520
+</p>
             <div className="footer-social">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                 <FaFacebook />
@@ -51,10 +51,10 @@ const Footer = () => {
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
                 <FaTwitter />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/zylo-tech-854312347/" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/zylo_tech_official/" target="_blank" rel="noopener noreferrer">
                 <FaInstagram />
               </a>
             </div>
@@ -65,7 +65,7 @@ const Footer = () => {
         <Row className="mt-4">
           <Col className="text-center">
             <p className="footer-copyright">
-              &copy; {new Date().getFullYear()} Zylo Tech. All rights reserved.
+              &copy;2024-{new Date().getFullYear()} Zylo Tech. All rights reserved.
             </p>
           </Col>
         </Row>
