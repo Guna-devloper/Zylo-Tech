@@ -2,7 +2,9 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaEnvelope,FaPhone } from "react-icons/fa";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 const Footer = () => {
+
   return (
     <footer className="footer">
       <Container>
@@ -19,19 +21,22 @@ const Footer = () => {
           <Col md={4} className="footer-column">
             <h5 className="footer-title">Quick Links</h5>
             <ul className="footer-links">
-              <li>
-                <a href="/">Home</a>
-              </li>
+            <Link to="/" className="nav-link">
+          Home
+        </Link>
            
-              <li>
-                <a href="/course">Course</a>
-              </li>
-              <li>
-                <a href="/quiz">Quizzes</a>
-              </li>
-              <li>
-                <a href="/about">About</a>
-              </li>
+                      <Link to="/course" className="nav-link">
+                      Courses
+                      </Link>
+                      <Link to="/quiz" className="nav-link">
+                        Quizzes
+                      </Link>
+                      <Link to="/coding" className="nav-link">
+                        PlayGround
+                      </Link>
+                      <Link to="/about" className="nav-link">
+                        About
+                      </Link>
             </ul>
           </Col>
 
