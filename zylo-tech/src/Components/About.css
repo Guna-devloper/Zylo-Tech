@@ -1,0 +1,57 @@
+.about-page {
+    background-color: beige;
+    color: black;
+  }
+  
+  .about-hero {
+    padding: 50px 0;
+    background-color: beige;
+  }
+  
+  .about-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .about-description {
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  
+  .mission-section,
+  .services-section,
+  .cta-section {
+    padding: 50px 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .service-card {
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cta-section {
+    background-color:whitesmoke;
+    color:black;
+    padding: 50px 20px;
+  }
+  
+  .cta-section h2 {
+    font-size: 2rem;
+  }
+  
+  .cta-section p {
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  
+  .cta-section .btn {
+    margin-top: 20px;
+  }
+  

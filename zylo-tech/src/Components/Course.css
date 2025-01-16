@@ -1,7 +1,7 @@
 /* Hero Section */
 .course-hero {
-    background: linear-gradient(to right, #6c63ff, #3b32e6);
-    color: #ffffff;
+    background: white;
+    color: black;
     padding: 60px 0;
   }
   
@@ -16,7 +16,7 @@
   }
   
   .enroll-button {
-    background-color: #ffc107;
+    background-color: red;
     border: none;
   }
   
@@ -100,8 +100,8 @@
   
   /* Call-to-Action Section */
   .cta-section {
-    background: #6c63ff;
-    color: #ffffff;
+    background:white;
+    color: black;
     padding: 40px 0;
     text-align: center;
   }
@@ -112,9 +112,29 @@
   }
   
   .cta-section .btn-success {
-    background-color: #28a745;
+    background-color: red;
     border: none;
     padding: 10px 20px;
     font-size: 1.2rem;
   }
+  .course-card .card {
+    color: black; /* Text color inside the card */
+    background-color: beige; /* Blue card background */
+    border: none; /* Remove card border */
+    border-radius: 8px; /* Round the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .course-card .card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Shadow on hover */
+    transform: translateY(-5px); /* Lift the card slightly */
+  }
+  
+  .course-card .card-body {
+    padding: 20px; /* Padding inside the card body */
+  }
+  
+  
+
   

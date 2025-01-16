@@ -1,0 +1,31 @@
+.quiz-option.selected {
+    background-color: #d3f9d8; /* Light green */
+    font-weight: bold;
+  }
+  
+  .quiz-page {
+    padding: 20px;
+  }
+  
+  .quiz-page h2 {
+    margin-bottom: 20px;
+  }
+  
+  .card-body {
+    font-size: 16px;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  
+  .popper {
+    position: absolute;
+    z-index: 999;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+  }
+  

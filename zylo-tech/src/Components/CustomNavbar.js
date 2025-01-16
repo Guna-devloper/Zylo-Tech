@@ -20,9 +20,6 @@ const CustomNavbar = () => {
         <Link to="/" className="nav-link">
           Home
         </Link>
-        <Link to="/dashboard" className="nav-link">
-          Dashboard
-        </Link>
         <Link to="/course" className="nav-link">
         Course
         </Link>
@@ -32,9 +29,11 @@ const CustomNavbar = () => {
         <Link to="/coding" className="nav-link">
           PlayGround
         </Link>
+        <Link to="/about" className="nav-link">
+          About
+        </Link>
 
-
-        {/* Dropdown Menu */}
+        {/* Dropdown Menu
         <div className="nav-dropdown">
           <button className="dropdown-toggle">
             <FaUserCircle size={20} className="me-2" />
@@ -52,7 +51,7 @@ const CustomNavbar = () => {
               Logout
             </Link>
           </div>
-        </div>
+        </div> */}
 
         {/* Call-to-Action Button */}
         <Link to="/signup" className="signup-button">
