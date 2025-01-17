@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Form, Button, Modal, Badge } from "react-bootstrap";
 import { FaUserEdit, FaGraduationCap, FaBook, FaPen } from "react-icons/fa";
 import "./Profile.css";
@@ -8,7 +8,12 @@ const Profile = () => {
 
   const handleEditModalClose = () => setShowEditModal(false);
   const handleEditModalShow = () => setShowEditModal(true);
+useEffect(() => {
+  
+  window.scrollTo(0, 0);
 
+
+}, [])
   const handleSaveChanges = () => {
     // Save profile changes logic (API integration can be added here)
     setShowEditModal(false);

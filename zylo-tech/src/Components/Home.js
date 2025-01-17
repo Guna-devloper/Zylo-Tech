@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col, Card, Carousel } from "react-bootstrap";
 import { FaChalkboardTeacher, FaBookOpen, FaVideo, FaGraduationCap } from "react-icons/fa";
 import { motion } from "framer-motion"; // Import Framer Motion
@@ -9,7 +9,9 @@ import ux from "../Assets/ui.png";
 
 const Home = () => {
   console.log("home------>>>>>>");
-
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, [])
   // Animations for Features and Testimonial Sections
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -116,9 +118,9 @@ const Home = () => {
           </motion.h2>
           <Row>
             {[
-              { text: "Zylo LMS helped me land my dream job! The courses are well-structured and the instructors are fantastic.", name: "John Doe", role: "Web Developer" },
-              { text: "The live classes were so interactive and engaging. I highly recommend this platform to all learners!", name: "Jane Smith", role: "Data Scientist" },
-              { text: "Zylo LMS provided me with the flexibility to learn at my own pace and earn certifications that boosted my career.", name: "Alex Johnson", role: "Graphic Designer" },
+              { text: "Zylo LMS helped me land my dream job! The courses are well-structured and the instructors are fantastic.", name: "Vignesh M", role: "Web Developer" },
+              { text: "The live classes were so interactive and engaging. I highly recommend this platform to all learners!", name: "Arul S", role: "Data Scientist" },
+              { text: "Zylo LMS provided me with the flexibility to learn at my own pace and earn certifications that boosted my career.", name: "Vishnu R", role: "Graphic Designer" },
             ].map((testimonial, index) => (
               <Col md={4} className="mb-4" key={index}>
                 <motion.div

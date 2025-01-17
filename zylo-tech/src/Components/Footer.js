@@ -53,7 +53,7 @@ const Footer = () => {
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                 <FaFacebook />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://x.com/zylotech_off" target="_blank" rel="noopener noreferrer">
                 <FaTwitter />
               </a>
               <a href="https://www.linkedin.com/in/zylo-tech-854312347/" target="_blank" rel="noopener noreferrer">

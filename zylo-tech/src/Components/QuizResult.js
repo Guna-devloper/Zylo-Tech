@@ -1,103 +1,93 @@
+// QuizResults.js
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, Accordion, Button } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
-import Confetti from "react-confetti";
-import { motion } from "framer-motion";
-import { FaTrophy } from "react-icons/fa"; // Add a trophy icon for a celebratory touch
+import { useLocation, useNavigate } from "react-router-dom";
+import { Container, Row, Col, Card, ListGroup } from "react-bootstrap";
+import { FaTrophy } from "react-icons/fa"; // Trophy icon
+import Confetti from "react-confetti"; // Party popper effect
+import "./Quiz.css"; // Make sure to import CSS for button styles
 
-const QuizResult = () => {
+const QuizResults = () => {
   const location = useLocation();
-  const { score, quizResults } = location.state;
-  const [isConfettiVisible, setConfettiVisible] = useState(false);
+  const { quizResults, score } = location.state || {}; // Get results and score from navigation state
+  const navigate = useNavigate();
 
-  // Start confetti effect after component mounts
+  const [showConfetti, setShowConfetti] = useState(false); // State for party popper effect
+
+  // Motivational quotes array
+  const motivationalQuotes = [
+    "Great job! Keep up the hard work!",
+    "You're doing amazing! Keep pushing forward!",
+    "Success is the sum of small efforts, repeated day in and day out.",
+    "Believe in yourself and all that you are!",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    "The only limit to our realization of tomorrow is our doubts of today.",
+  ];
+
+  const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+
   useEffect(() => {
-    setConfettiVisible(true);
-    setTimeout(() => {
-      setConfettiVisible(false);
-    }, 5000); // Confetti will show for 5 seconds
-  }, []);
+    // Scroll to the top of the page on initial render
+    window.scrollTo(0, 0);
+
+    if (score > 0) {
+      setShowConfetti(true);
+      setTimeout(() => {
+        setShowConfetti(false); // Stop confetti after a few seconds
+      }, 5000); // Adjust the duration of the confetti effect
+    }
+  }, [score]);
+
+  const handleRetryQuiz = () => {
+    navigate("/quiz"); // Redirect to quiz page to take the quiz again
+  };
 
   return (
     <Container>
-      <h2 className="text-center mt-4 mb-4">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          Quiz Results
-        </motion.div>
-      </h2>
+      <Row>
+        <Col>
+          <h3>Quiz Results</h3>
 
-      {/* Confetti effect */}
-      {isConfettiVisible && <Confetti width={window.innerWidth} height={window.innerHeight} />}
+          {/* Display Random Motivational Quote */}
+          <div className="text-center mb-4">
+            <h4>{randomQuote}</h4>
+          </div>
 
-      <Row className="justify-content-center">
-        <Col md={8}>
-          <Card className="shadow-lg rounded">
+          {showConfetti && (
+            <Confetti
+              width={window.innerWidth}
+              height={window.innerHeight}
+              gravity={0.2}
+              numberOfPieces={500} // Number of confetti pieces
+            />
+          )}
+
+          <Card>
             <Card.Body>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, scale: 1.1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-              >
-                <Card.Title className="text-center">
-                  <h3>
-                    <FaTrophy style={{ color: "#FFD700", fontSize: "2rem" }} /> Your Score: {score} out of {quizResults.reduce((sum, topic) => sum + topic.total, 0)}
-                  </h3>
-                </Card.Title>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 1 }}
-              >
-                <Card.Text className="text-center mb-4">
-                  Great job! Keep up the learning and keep improving.
-                </Card.Text>
-              </motion.div>
-
-              {/* Expandable section with quiz feedback */}
-              <Accordion defaultActiveKey="0">
-                <Accordion.Item eventKey="0">
-                  <Accordion.Header>
-                    <h5>Review Your Answers</h5>
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    <p>Here's how you performed in each topic:</p>
-                    <ul>
-                      {quizResults.map((result, index) => (
-                        <li key={index}>
-                          <strong>{result.topic}:</strong> Correct Answers: {result.correct}/{result.total}
-                        </li>
-                      ))}
-                    </ul>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-
-              {/* Motivational quote */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, translateY: 20 }}
-                transition={{ delay: 1.5, duration: 1 }}
-              >
-                <div className="text-center mt-4">
-                  <Button variant="success" size="lg" onClick={() => window.location.reload()}>
-                    Try Another Quiz
-                  </Button>
-                </div>
-                <p className="text-center mt-3" style={{ fontStyle: "italic", color: "#555" }}>
-                  "The future depends on what you do today." – Mahatma Gandhi
-                </p>
-              </motion.div>
+              <h4>Your Total Score: {score}</h4>
+              <div className="d-flex justify-content-center mb-4">
+                <FaTrophy size={50} color="gold" />
+              </div>
+              <ListGroup variant="flush">
+                {quizResults?.map((result, index) => (
+                  <ListGroup.Item key={index}>
+                    <h5>{result.topic}</h5>
+                    <p>Correct Answers: {result.correctAnswers}</p>
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
             </Card.Body>
           </Card>
+
+          {/* Retry Quiz Button */}
+          <div className="d-flex justify-content-center mt-4">
+            <button className="submit-btn" onClick={handleRetryQuiz}>
+              Retry Quiz
+            </button>
+          </div>
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default QuizResult;
+export default QuizResults;

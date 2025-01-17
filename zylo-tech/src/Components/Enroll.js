@@ -1,13 +1,19 @@
-import React, { useState } from "react";
-import { Card, Button, Form, Row, Col } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Card, Form, Row, Col } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import emailjs from "emailjs-com";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS for styling
 import "./Enroll.css";
 import enroll from "../Assets/enroll1.png";
 
 const Enroll = () => {
   const location = useLocation();
   const { course } = location.state || { course: "Unknown Course" }; // Fallback in case no course is passed
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [formDetails, setFormDetails] = useState({
     firstName: "",
@@ -52,11 +58,33 @@ const Enroll = () => {
       .then(
         (response) => {
           setIsSubmitting(false);
-          alert("Enrollment details successfully sent! Check your email for confirmation.");
+          toast.success("Enrollment details successfully sent! Check your email for confirmation.", {
+            position: "top-right", // Toast position
+            autoClose: 5000, // Auto close after 5 seconds
+            hideProgressBar: true,
+            style: {
+              backgroundColor: "beige", // Green background for success
+              color: "green", // White text
+              borderRadius: "10px",
+              padding: "10px 20px",
+              fontWeight: "italic",
+            },
+          });
         },
         (error) => {
           setIsSubmitting(false);
-          alert("Failed to send enrollment details. Please try again later.");
+          toast.error("Failed to send enrollment details. Please try again later.", {
+            position: "top-right", // Toast position
+            autoClose: 5000, // Auto close after 5 seconds
+            hideProgressBar: true,
+            style: {
+              backgroundColor: "beige", // Red background for error
+              color: "red", // White text
+              borderRadius: "10px",
+              padding: "10px 20px",
+              fontWeight: "italic",
+            },
+          });
           console.error("EmailJS Error:", error);
         }
       );
@@ -155,11 +183,14 @@ const Enroll = () => {
               onChange={handleInputChange}
             />
           </Form.Group>
-          <Button variant="primary" type="submit" disabled={isSubmitting}>
+          <button className="enroll-button" type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Submitting..." : "Enroll Now"}
-          </Button>
+          </button>
         </Form>
       </div>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 };

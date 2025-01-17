@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import "./Course.css";
@@ -10,7 +10,16 @@ const Course = () => {
   const handleEnroll = (courseName) => {
     navigate("/enroll", { state: { course: courseName } });
   };
+const handleViewall = ()=>{
+  window.scrollTo(0, 0);
 
+}
+useEffect(() => {
+  
+  window.scrollTo(0, 0);
+
+
+}, [])
   // Animation Variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -87,13 +96,12 @@ const Course = () => {
         <p>
           Learn {course} with hands-on projects and expert mentorship to boost your career.
         </p>
-        <Button
-          variant="danger" /* Change button style to suit the new card color */
+        <button
           className="enroll-button"
           onClick={() => handleEnroll(course)}
         >
           Enroll Now
-        </Button>
+        </button>
       </Card.Body>
     </Card>
   </motion.div>
@@ -110,9 +118,9 @@ const Course = () => {
           <Row className="text-center">
             <Col>
               <h2>Join Thousands of Learners Today</h2>
-              <Button variant="success" size="lg" onClick={() => handleEnroll("General Enrollment")}>
+              <button className="submit-btn"  onClick={() => handleViewall("General Enrollment")}>
                 View All Courses
-              </Button>
+              </button>
             </Col>
           </Row>
         </Container>

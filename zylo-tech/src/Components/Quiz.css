@@ -28,4 +28,55 @@
     font-weight: bold;
     color: white;
   }
+  .quiz-option {
+    cursor: pointer;
+  }
   
+  .quiz-option.selected {
+    background-color: #f8f9fa;
+  }
+  
+  .quiz-option.correct {
+    background-color: #28a745; /* Green for correct answers */
+    color: white;
+  }
+  
+  .quiz-option.incorrect {
+    background-color: #dc3545; /* Red for incorrect answers */
+    color: white;
+  }
+  .answer-button {
+    margin: 5px;
+  }
+  
+  .correct-answer {
+    background-color: #28a745; /* Green */
+    color: white;
+  }
+  
+  .incorrect-answer {
+    background-color: #dc3545; /* Red */
+    color: white;
+  }
+  /* Quiz.css */
+
+.submit-btn {
+  background-color:rgba(0, 0, 0, 0.658); /* Grey text on hover */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Add padding */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  border-radius: 5px; /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.submit-btn:hover {
+  background-color: #ffffff; /* White background on hover */
+  color:black; /* Grey text on hover */
+  border: 1px solid #808080; /* Grey border on hover */
+}
+
+.submit-btn:focus {
+  outline: none; /* Remove default focus outline */
+}

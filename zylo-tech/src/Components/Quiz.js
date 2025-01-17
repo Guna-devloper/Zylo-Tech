@@ -1,13 +1,17 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Card, Button, ListGroup } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col, Card, Button, ListGroup ,ButtonGroup} from "react-bootstrap";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { usePopper } from "react-popper";
 import "./Quiz.css";
 
 const Quiz = () => {
   const navigate = useNavigate();
+useEffect(() => {
+  
+  window.scrollTo(0, 0);
 
+
+}, [])
   // Questions for different topics
   const questions = {
     "C": [
@@ -196,101 +200,85 @@ const Quiz = () => {
     "Spring Boot": Array(3).fill(null),
   });
 
-  // Popper setup for correct answers
-  const [popperVisible, setPopperVisible] = useState(false);
-  const [popperRef, setPopperRef] = useState(null);
-  const { styles, attributes } = usePopper(popperRef, document.body, {
-    modifiers: [
-      {
-        name: "offset",
-        options: {
-          offset: [0, 8],
-        },
-      },
-    ],
-  });
+
 
   const handleAnswerSelection = (topic, questionIndex, selectedOption) => {
     const newSelectedAnswers = { ...selectedAnswers };
-    newSelectedAnswers[topic][questionIndex] = selectedOption;
-    setSelectedAnswers(newSelectedAnswers);
-
-    // Check if the selected answer is correct
-    if (selectedOption === questions[topic][questionIndex].correctAnswer) {
-      setPopperVisible(true);
-    } else {
-      setPopperVisible(false);
+    if (newSelectedAnswers[topic][questionIndex] === null) {
+      newSelectedAnswers[topic][questionIndex] = selectedOption;
     }
+    setSelectedAnswers(newSelectedAnswers);
   };
 
   const handleSubmitQuiz = () => {
-    const quizResults = [
-        { topic: "C Programming", correct: 2, total: 3 },
-        { topic: "JavaScript", correct: 2, total: 3 },
-        { topic: "CSS", correct: 3, total: 3 },
-        { topic: "HTML", correct: 2, total: 3 },
-      ];
+    const quizResults = [];
     const score = Object.keys(questions).reduce((acc, topic) => {
       const correctAnswers = selectedAnswers[topic].filter(
         (answer, index) => answer === questions[topic][index].correctAnswer
       ).length;
-      acc += correctAnswers;
-      return acc;
+      quizResults.push({ topic, correctAnswers });
+      return acc + correctAnswers;
     }, 0);
-navigate("/quizresults", { state: { score, quizResults } });  };
+  
+    navigate("/quizresults", { state: { quizResults, score } });  // Make sure to pass the score as well
+  };
 
   return (
-    <motion.div className="quiz-page" initial="hidden" animate="visible" exit="hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <Container>
-        <h2 className="text-center">Quiz</h2>
+        <Row>
+          <Col>
+            <h3>Quiz</h3>
+            <Card>
+              <Card.Body>
+                <ListGroup variant="flush">
+                  {Object.keys(questions).map((topic) => (
+                    <div key={topic}>
+                      <h4>{topic}</h4>
+                      {questions[topic].map((question, index) => (
+                        <ListGroup.Item key={index}>
+                          <p>{question.question}</p>
+                          <ButtonGroup className="d-flex justify-content-between w-100">
+                          {question.options.map((option, i) => (
+                            <Button
+                              key={i}
+                              variant={
+                                selectedAnswers[topic][index] === i
+                                  ? i === question.correctAnswer
+                                    ? "success"
+                                    : "danger"
+                                  : "secondary"
+                              }
+                              onClick={() =>
+                                handleAnswerSelection(topic, index, i)
+                              }
+                              disabled={selectedAnswers[topic][index] !== null}
+                            >
+                              {option}
+                            </Button>
+                            
+                          ))}
+                        </ButtonGroup>
 
-        {/* Quiz Content */}
-        {Object.keys(questions).map((topic, topicIndex) => (
-          <Row key={topicIndex}>
-            <Col md={12} className="mb-4">
-              <h3>{topic} Quiz</h3>
-              {questions[topic].map((question, qIndex) => (
-                <Card key={qIndex} className="mb-3">
-                  <Card.Body>
-                    <Card.Title>{question.question}</Card.Title>
-                    <ListGroup variant="flush">
-                      {question.options.map((option, oIndex) => (
-                        <ListGroup.Item
-                          key={oIndex}
-                          action
-                          onClick={() => handleAnswerSelection(topic, qIndex, oIndex)}
-                          className={`quiz-option ${
-                            selectedAnswers[topic][qIndex] === oIndex ? "selected" : ""
-                          }`}
-                        >
-                          {option}
                         </ListGroup.Item>
                       ))}
-                    </ListGroup>
-                  </Card.Body>
-                </Card>
-              ))}
-            </Col>
-          </Row>
-        ))}
-
-        {/* Popper Effect for Correct Answer */}
-        {popperVisible && (
-          <div
-            ref={setPopperRef}
-            style={{ ...styles.popper, backgroundColor: "#28a745", padding: "8px", borderRadius: "5px", color: "#fff" }}
-            {...attributes.popper}
-          >
-            Correct Answer!
-          </div>
-        )}
-
-        {/* Submit Button */}
-        <Row>
-          <Col md={12} className="text-center">
-            <Button variant="success" onClick={handleSubmitQuiz}>
-              Submit Quiz
-            </Button>
+                    </div>
+                  ))}
+                </ListGroup>
+                <div className="d-flex justify-content-center mt-4">
+                  <button
+                    className="submit-btn"
+                    onClick={handleSubmitQuiz}
+                  >
+                    Submit Quiz
+                  </button>
+                </div>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>

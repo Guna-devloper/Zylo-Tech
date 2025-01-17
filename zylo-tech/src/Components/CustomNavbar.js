@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../Assets/zlogo.png";
 import emailjs from "emailjs-com";
-import { Modal, Button, Form, Spinner, Alert } from "react-bootstrap";
+import { Modal, Form, Spinner } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS for styling
 import "./CustomNavbar.css";
 
 const CustomNavbar = () => {
@@ -16,7 +18,6 @@ const CustomNavbar = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,7 +26,6 @@ const CustomNavbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setShowConfirmation(false);
 
     // Prepare email template parameters
     const templateParams = {
@@ -48,7 +48,18 @@ const CustomNavbar = () => {
       .then(
         () => {
           setIsSubmitting(false);
-          setShowConfirmation(true);
+          toast.success("Your request has been successfully submitted! We will get back to you soon.", {
+            position: "top-right", // Toast position
+            autoClose: 5000, // Auto close after 5 seconds
+            hideProgressBar: true,
+            style: {
+              backgroundColor: "beige", // Green background for success
+              color: "green", // White text
+              borderRadius: "10px",
+              padding: "10px 20px",
+              fontWeight: "italic",
+            },
+          });
           setFormData({
             firstName: "",
             lastName: "",
@@ -61,7 +72,18 @@ const CustomNavbar = () => {
         },
         (error) => {
           setIsSubmitting(false);
-          alert("Failed to send your request. Please try again.");
+          toast.error("Failed to send your request. Please try again.", {
+            position: "top-right", // Toast position
+            autoClose: 5000, // Auto close after 5 seconds
+            hideProgressBar: true,
+            style: {
+              backgroundColor: "beige", // Red background for error
+              color: "red", // White text
+              borderRadius: "10px",
+              padding: "10px 20px",
+              fontWeight: "italic",
+            },
+          });
           console.error("EmailJS Error:", error);
         }
       );
@@ -94,7 +116,7 @@ const CustomNavbar = () => {
         <Link to="/about" className="nav-link">
           About
         </Link>
-        <Link to="#" className="signup-button" onClick={() => setShowModal(true)}>
+        <Link to="#" className="nav-btn" onClick={() => setShowModal(true)}>
           Get Demo
         </Link>
       </nav>
@@ -182,7 +204,7 @@ const CustomNavbar = () => {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" disabled={isSubmitting}>
+            <button className="demo-btn" type="submit" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
                   <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
@@ -191,22 +213,13 @@ const CustomNavbar = () => {
               ) : (
                 "Submit"
               )}
-            </Button>
+            </button>
           </Form>
         </Modal.Body>
       </Modal>
 
-      {/* Confirmation Alert */}
-      {showConfirmation && (
-        <Alert
-          variant="success"
-          onClose={() => setShowConfirmation(false)}
-          dismissible
-          className="mt-3"
-        >
-          Your request has been successfully submitted! We will get back to you soon.
-        </Alert>
-      )}
+      {/* Toast Container */}
+      <ToastContainer />
     </header>
   );
 };

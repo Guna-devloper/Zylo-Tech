@@ -4,7 +4,6 @@ import CustomNavbar from "./Components/CustomNavbar"; // Make sure Navbar uses L
 import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
-import Signup from "./Components/SignUp";
 import Profile from "./Components/Profile";
 import Course from "./Components/Course";
 import Coding from "./Components/Coding";
@@ -20,7 +19,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/course" element={<Course />} />
         <Route path="/coding" element={<Coding userId="12345" />} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { motion } from "framer-motion";
 import "./About.css";
 import logo from "../Assets/zlogo.png"; 
@@ -145,9 +145,9 @@ const About = () => {
                 Join ZyloTech today and unlock your potential with our
                 industry-leading courses, internships, and resources.
               </p>
-              <Button variant="success" size="lg">
+              <button className="about-btn">
                 Get Started
-              </Button>
+              </button>
             </Col>
           </Row>
         </Container>
