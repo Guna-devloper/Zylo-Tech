@@ -44,7 +44,7 @@ const Footer = () => {
           <Col md={4} className="footer-column">
             <h5 className="footer-title">Contact Us</h5>
             <p className="footer-contact">
-              <FaEnvelope />zylotechofficial@gmail.com
+              <FaEnvelope /> zylotechofficial@gmail.com
             </p>
             <p className="footer-contact">
   <FaPhone /> +91 8220775520

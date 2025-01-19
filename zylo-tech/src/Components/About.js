@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { motion } from "framer-motion";
 import "./About.css";
 import logo from "../Assets/zlogo.png"; 
 
 const About = () => {
+  useEffect(() => {
+    
+    window.scrollTo(0, 0);
+  
+  
+  }, [])
   // Animation Variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
