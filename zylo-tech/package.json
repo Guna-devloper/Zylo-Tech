@@ -11,6 +11,7 @@
     "@mui/icons-material": "^6.2.0",
     "@mui/material": "^6.2.0",
     "@popperjs/core": "^2.11.8",
+    "@uiw/codemirror-theme-github": "^4.23.7",
     "@uiw/react-codemirror": "^4.23.7",
     "antd": "^5.22.4",
     "axios": "^1.7.9",
