@@ -8,6 +8,8 @@ import { githubLight } from "@uiw/codemirror-theme-github";
 import axios from "axios";
 import "./Coding.css";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { FaKeyboard } from 'react-icons/fa';
+
 
 const Coding = ({ userId }) => {
   const [code, setCode] = useState("// Write your code here...");
@@ -15,11 +17,11 @@ const Coding = ({ userId }) => {
   const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const [userInput, setUserInput] = useState(""); // State for user input
 
   const apiKey = "08b860f405mshbb8068011874f25p13e3d4jsn1787c4e29b41";
   const apiUrl = "https://judge0-ce.p.rapidapi.com";
 
-  // Language templates
   const languageTemplates = {
     javascript: `// JavaScript: Hello, World!
 console.log("Hello, World!");`,
@@ -46,14 +48,12 @@ public class Main {
 }`,
   };
 
-  // Fetch saved code when the component loads
   useEffect(() => {
     axios
       .get(`/api/code/${userId}`)
       .then((res) => setCode(res.data.code))
       .catch((err) => console.error("Error fetching saved code:", err));
 
-    // New API call to fetch Judge0 system info
     const fetchSystemInfo = async () => {
       const options = {
         method: "GET",
@@ -75,7 +75,6 @@ public class Main {
     fetchSystemInfo();
   }, [userId]);
 
-  // Save the code to the backend
   const handleSaveCode = () => {
     axios
       .post(`/api/code/save`, { userId, code, language })
@@ -83,19 +82,18 @@ public class Main {
       .catch((err) => console.error("Error saving code:", err));
   };
 
-  // Map language to Judge0 language IDs
   const getLanguageId = () => {
     switch (language) {
       case "javascript":
-        return 63; // Node.js
+        return 63;
       case "python":
-        return 71; // Python 3
+        return 71;
       case "cpp":
-        return 54; // C++ (GCC)
+        return 54;
       case "java":
-        return 62; // Java (OpenJDK)
+        return 62;
       case "c":
-        return 50; // C (GCC)
+        return 50;
       default:
         return 63;
     }
@@ -103,18 +101,17 @@ public class Main {
 
   const handleRunCode = async () => {
     setIsLoading(true);
-    setOutput(""); // Clear previous output
-  
+    setOutput(""); 
+
     try {
-      // Encode the code in base64
       const encodedCode = btoa(code);
-  
+
       const submissionResponse = await axios.post(
-        `${apiUrl}/submissions?base64_encoded=true&wait=false`, // Change to base64_encoded=true
+        `${apiUrl}/submissions?base64_encoded=true&wait=false`,
         {
-          source_code: encodedCode, // Send the Base64 encoded code
+          source_code: encodedCode,
           language_id: getLanguageId(),
-          stdin: "",
+          stdin: userInput,
         },
         {
           headers: {
@@ -124,34 +121,31 @@ public class Main {
           },
         }
       );
-  
+
       const token = submissionResponse.data.token;
-  
-      // Poll for result
+
       let result = null;
       while (!result || result.status?.id <= 2) {
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait 1 second
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         const resultResponse = await axios.get(`${apiUrl}/submissions/${token}`, {
           headers: {
             "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
             "x-rapidapi-key": apiKey,
           },
         });
-  
+
         result = resultResponse.data;
       }
-  
+
       setOutput(result.stdout || result.stderr || "No output.");
     } catch (error) {
       setOutput("Error running code. Please try again.");
       console.error("Run Code Error:", error.response || error);
     }
-  
+
     setIsLoading(false);
   };
-  
 
-  // Determine the language extension for CodeMirror
   const getLanguageExtension = () => {
     switch (language) {
       case "javascript":
@@ -166,26 +160,19 @@ public class Main {
     }
   };
 
-  // Handle theme toggle
   const toggleTheme = () => setIsDarkTheme(!isDarkTheme);
 
-  // Handle language change
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;
     setLanguage(selectedLanguage);
-    setCode(languageTemplates[selectedLanguage]); // Set default template
+    setCode(languageTemplates[selectedLanguage]);
   };
 
   return (
     <div className={`coding-practice-container ${isDarkTheme ? "dark" : "light"}`}>
       <h2>Coding Practice</h2>
 
-      {/* Language Selector */}
-      <select
-        value={language}
-        onChange={handleLanguageChange}
-        className="language-selector"
-      >
+      <select value={language} onChange={handleLanguageChange} className="language-selector">
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
         <option value="cpp">C++</option>
@@ -193,12 +180,10 @@ public class Main {
         <option value="java">Java</option>
       </select>
 
-      {/* Theme Toggle Button */}
       <button onClick={toggleTheme} className="theme-toggle-button">
         {isDarkTheme ? <FaSun size={20} /> : <FaMoon size={20} />}
       </button>
 
-      {/* Code Editor */}
       <CodeMirror
         value={code}
         height="300px"
@@ -207,7 +192,19 @@ public class Main {
         onChange={(value) => setCode(value)}
       />
 
-      {/* Action Buttons */}
+      <div className="custom-input-area">
+        <label htmlFor="user-input" className="input-label">
+          <FaKeyboard size={20} /> Provide Input
+        </label>
+        <textarea
+          id="user-input"
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          placeholder="Enter input for your program (e.g., 5 10 15)"
+          className="user-input"
+        ></textarea>
+      </div>
+
       <div className="coding-buttons">
         <button onClick={handleSaveCode} disabled={isLoading}>
           Save Code
@@ -217,13 +214,10 @@ public class Main {
         </button>
       </div>
 
-      {/* Output */}
       <div className="output-container">
         <h3>Output</h3>
         <pre>{output}</pre>
       </div>
-
-    
     </div>
   );
 };
