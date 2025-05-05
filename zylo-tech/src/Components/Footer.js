@@ -70,7 +70,7 @@ const Footer = () => {
         <Row className="mt-4">
           <Col className="text-center">
             <p className="footer-copyright">
-              &copy;2024-{new Date().getFullYear()} Zylo Tech. All rights reserved.
+              &copy;2024 Zylo Tech. All rights reserved.
             </p>
           </Col>
         </Row>
